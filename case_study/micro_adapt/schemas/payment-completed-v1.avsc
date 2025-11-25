@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "PaymentCompleted",
+  "namespace": "com.research.adapt.events.payment",
+  "version": "1",
+  "doc": "Event emitted when payment is successfully completed",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Associated order ID"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User ID who initiated the payment"
+    },
+    {
+      "name": "paymentId",
+      "type": "long",
+      "doc": "Unique identifier for the payment"
+    },
+    {
+      "name": "transactionId",
+      "type": "string",
+      "doc": "External payment gateway transaction ID"
+    },
+    {
+      "name": "amount",
+      "type": "string",
+      "doc": "Payment amount"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "InvoiceGenerated",
+  "namespace": "com.research.adapt.events.billing",
+  "version": "1",
+  "doc": "Event emitted when an invoice is generated",
+  "fields": [
+    {
+      "name": "invoiceId",
+      "type": "long",
+      "doc": "Unique identifier for the invoice"
+    },
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Associated order ID"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User for whom the invoice is generated"
+    },
+    {
+      "name": "totalAmount",
+      "type": "string",
+      "doc": "Invoice total amount"
+    },
+    {
+      "name": "invoiceNumber",
+      "type": "string",
+      "doc": "Human-readable invoice number"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

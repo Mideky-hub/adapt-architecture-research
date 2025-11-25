@@ -1,0 +1,53 @@
+{
+  "type": "record",
+  "name": "OrderCreated",
+  "namespace": "com.research.adapt.events.order",
+  "version": "1",
+  "doc": "Event emitted when a new order is created",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Unique identifier for the order"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User who created the order"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "OrderItem",
+          "fields": [
+            {
+              "name": "productId",
+              "type": "long"
+            },
+            {
+              "name": "quantity",
+              "type": "int"
+            },
+            {
+              "name": "unitPrice",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "totalAmount",
+      "type": "string",
+      "doc": "Total order amount as string to avoid precision issues"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

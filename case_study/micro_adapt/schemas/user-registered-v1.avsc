@@ -1,0 +1,34 @@
+{
+  "type": "record",
+  "name": "UserRegistered",
+  "namespace": "com.research.adapt.events.user",
+  "version": "1",
+  "doc": "Event emitted when a new user registers",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "Unique identifier for the user"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "doc": "Username"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "doc": "User email address"
+    },
+    {
+      "name": "fullName",
+      "type": "string",
+      "doc": "User full name"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

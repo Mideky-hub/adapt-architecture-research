@@ -1,0 +1,63 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+target/
+*.iml
+.idea/
+.classpath
+.project
+.settings/
+bin/
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Spring Boot
+spring-boot-*.log
+application-*.properties.local
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+*.code-workspace
+.vscode/
+*.sublime-*
+
+# Logs
+logs/
+*.log.*
+
+# Database
+*.db
+*.sqlite
+
+# Quarto
+/.quarto/
+_site/
+*.rdb
+
+# Test
+*.test
+
+# Benchmarking results
+benchmarks/results/*.html
+benchmarks/results/*.json
+benchmarks/results/*.log

@@ -1,0 +1,51 @@
+[
+  {
+    "type": "enum",
+    "name": "PaymentFailureCode",
+    "namespace": "com.research.adapt.events.payment",
+    "doc": "Enum for payment failure codes",
+    "symbols": [
+      "GATEWAY_ERROR",
+      "INSUFFICIENT_FUNDS",
+      "INVALID_CARD",
+      "CARD_EXPIRED",
+      "SYSTEM_ERROR",
+      "TIMEOUT",
+      "FRAUD_DETECTED"
+    ]
+  },
+  {
+    "type": "record",
+    "name": "PaymentFailed",
+    "namespace": "com.research.adapt.events.payment",
+    "version": "1",
+    "doc": "Event emitted when payment fails",
+    "fields": [
+      {
+        "name": "orderId",
+        "type": "long",
+        "doc": "Associated order ID"
+      },
+      {
+        "name": "userId",
+        "type": "long",
+        "doc": "User ID who initiated the payment"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "doc": "Reason for payment failure"
+      },
+      {
+        "name": "failureCode",
+        "type": "PaymentFailureCode",
+        "doc": "Payment failure code"
+      },
+      {
+        "name": "timestamp",
+        "type": "long",
+        "doc": "Event timestamp in epoch millis"
+      }
+    ]
+  }
+]

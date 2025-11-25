@@ -1,0 +1,34 @@
+{
+  "type": "record",
+  "name": "NotificationSent",
+  "namespace": "com.research.adapt.events.notification",
+  "version": "1",
+  "doc": "Event emitted when a notification is successfully sent",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "Recipient user ID"
+    },
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Related order ID"
+    },
+    {
+      "name": "notificationType",
+      "type": "string",
+      "doc": "Type of notification (EMAIL, SMS, etc.)"
+    },
+    {
+      "name": "recipient",
+      "type": "string",
+      "doc": "Notification recipient (email address, phone number, etc.)"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

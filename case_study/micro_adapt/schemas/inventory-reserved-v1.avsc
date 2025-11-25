@@ -1,0 +1,47 @@
+{
+  "type": "record",
+  "name": "InventoryReserved",
+  "namespace": "com.research.adapt.events.inventory",
+  "version": "1",
+  "doc": "Event emitted when inventory is successfully reserved for an order",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Associated order ID"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User who placed the order"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "ReservedItem",
+          "fields": [
+            {
+              "name": "productId",
+              "type": "long",
+              "doc": "Product ID"
+            },
+            {
+              "name": "quantity",
+              "type": "int",
+              "doc": "Quantity reserved"
+            }
+          ]
+        }
+      },
+      "doc": "List of reserved items"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

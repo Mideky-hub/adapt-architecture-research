@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "name": "OrderFailed",
+  "namespace": "com.research.adapt.events.order",
+  "version": "1",
+  "doc": "Event emitted when an order fails",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Unique identifier for the order"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User who created the order"
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "doc": "Reason for failure"
+    },
+    {
+      "name": "failureCode",
+      "type": {
+        "type": "enum",
+        "name": "OrderFailureCode",
+        "symbols": ["PAYMENT_FAILED", "INVENTORY_UNAVAILABLE", "VALIDATION_ERROR", "SYSTEM_ERROR"]
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

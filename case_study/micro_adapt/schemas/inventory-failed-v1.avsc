@@ -1,0 +1,42 @@
+{
+  "type": "record",
+  "name": "InventoryFailed",
+  "namespace": "com.research.adapt.events.inventory",
+  "version": "1",
+  "doc": "Event emitted when inventory reservation fails",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "long",
+      "doc": "Associated order ID"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "User who placed the order"
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "doc": "Failure reason description"
+    },
+    {
+      "name": "failureCode",
+      "type": {
+        "type": "enum",
+        "name": "InventoryFailureCode",
+        "symbols": [
+          "INSUFFICIENT_STOCK",
+          "PRODUCT_NOT_FOUND",
+          "SYSTEM_ERROR"
+        ]
+      },
+      "doc": "Categorized failure code"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in epoch millis"
+    }
+  ]
+}

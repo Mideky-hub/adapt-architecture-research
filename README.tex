@@ -1,0 +1,525 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\author{}
+\date{}
+\begin{document}
+
+
+\section{Design and Development of cloud-based microservice architecture
+for resilient, performant and scalable applications using ADAPT Design
+Patterns}\label{design-and-development-of-cloud-based-microservice-architecture-for-resilient-performant-and-scalable-applications-using-adapt-design-patterns}
+
+Mr.~Mathieu KERBEL
+
+Senior Software Engineer \& Cloud Solutions Architect Creator of the
+ADAPT Architecture Principle Paris, Île-de-France, France
+mathieukerbel@gmail.com
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{README_files/mediabag/Architecture-ADAPT-b.pdf}}
+
+}
+
+\caption{ADAPT Architecture}
+
+\end{figure}%
+
+\subsection{Abstract}\label{abstract}
+
+Microservices have revolutionized software architecture by promoting
+modularity, scalability, interoperability and resilience. However,
+traditional design principles like SOLID have shown limitations in
+addressing the complexities of microservices architectures, more
+particularly in cloud-based environments. This research paper explores
+the application of the ADAPT (Asynchronous, Domain-distributed,
+Abstraction-moderated, Piloted through events, Transparent and
+observable) architecture principles and design patterns to develop a
+robust microservices architecture for cloud-based applications.
+
+\subsection{Introduction}\label{introduction}
+
+The history of software architecture is continous struggl against
+entropy and complexity. As applications grow in size and functionality,
+the era of monolithic architectures with the logical architecture (how
+the code is organized) and thge physical architecture (how the code is
+deployed) tightly coupled together has shown its limitations.
+Microservices architecture emerged as a solution to these challenges,
+offering a way to break down applications into smaller, independent
+services that can be developed, deployed, and scaled independently.
+
+If the SOLID principles
+
+/// continue once results has been achieved.
+
+\subsection{Literature Review}\label{literature-review}
+
+\subsection{Methodology}\label{methodology}
+
+\subsubsection{Event-Driven Architecture and DX-based
+approach}\label{event-driven-architecture-and-dx-based-approach}
+
+\subsubsection{ADAPT Principles and Design
+Patterns}\label{adapt-principles-and-design-patterns}
+
+\paragraph{Asynchronous Communication}\label{asynchronous-communication}
+
+\begin{quote}
+``Services must be decoupled, communicating through events rather than
+direct calls to build resilient and scalable systems.''
+\end{quote}
+
+First principle of ADAPT architecture {[}1{]}{[}2{]} focuses on
+asynchronous communication between microservices to enhance scalability
+and resilience. This section explores various asynchronous communication
+patterns such as message queues, event streaming, and publish--subscribe
+models.
+
+\subparagraph{Message queues, event streaming, and publish--subscribe
+models using Apache
+Kafka}\label{message-queues-event-streaming-and-publishsubscribe-models-using-apache-kafka}
+
+Kafka is a distributed event streaming platform that enables
+asynchronous communication between microservices. It allows services to
+publish and subscribe to streams of records, facilitating decoupled
+interactions. As there are multiple ways to manage message queues, Kafka
+is one of the most popular solutions for building event-driven
+architectures, therefore it is used as an example in this section.
+
+Figure 1: Kafka Cluster in an Emitting and Receiving System Component
+
+A few rikes can benefit from using Kafka in microservices architecture
+include :
+
+\begin{itemize}
+\item
+  \textbf{Decoupling services}: Kafka allows services to communicate
+  without direct dependencies, enhancing flexibility and
+  maintainability.
+\item
+  \textbf{Scalability}: Kafka's distributed architecture supports high
+  throughput and can handle large volumes of data, its axis of
+  scalability is horizontal due to its distributed nature. As data
+  expand across multiple brokers, Kafka can efficiently manage increased
+  loads by adding more brokers to the cluster.
+\item
+  \textbf{Resilience \& Fault Tolerance}: Kafka's fault-tolerant design
+  ensures that messages are not lost, even in the event of service
+  failures. It achieves this through data replication across multiple
+  brokers and automatic failover mechanisms.
+\item
+  \textbf{Real-time Data Processing}: Kafka enables real-time data
+  streaming and processing, which is essential for applications
+  requiring immediate insights and actions.
+\item
+  \textbf{Event Sourcing}: Kafka can be used to implement event sourcing
+  patterns, where state changes are logged as a sequence of events,
+  allowing for better traceability and recovery.
+\end{itemize}
+
+\paragraph{Domain-Distributed-Driven
+Design}\label{domain-distributed-driven-design}
+
+\begin{quote}
+``The architecture must mirror the business domain, with services
+organized around business capabilities, not technical layers.''
+\end{quote}
+
+The second principle of ADAPT architecture {[}1{]}{[}2{]} emphasizes the
+importance of aligning microservices with business domains. This section
+discusses Domain-Driven Design (DDD) concepts such as bounded contexts,
+aggregates, and domain events to structure services around business
+capabilities.
+
+The ADAPT principle redefines the single responsibility principle from
+SOLID with a business capability having the complete ownership of its
+data and logic within a bounded context. This approach ensures that each
+microservice is responsible for a specific business function, avoinding
+some common pitfalls of microservices that going against the atomicity
+of business capabilities.
+
+\paragraph{Abstraction Moderation}\label{abstraction-moderation}
+
+\paragraph{Piloted through Events and
+Configurations}\label{piloted-through-events-and-configurations}
+
+\paragraph{Transparency and Observability through
+Contacts}\label{transparency-and-observability-through-contacts}
+
+\subsubsection{Implementation}\label{implementation}
+
+\subsubsection{Case Study: E-commerce
+Application}\label{case-study-e-commerce-application}
+
+To demonstrate the practical application of the ADAPT principles, this
+chapter details the migration of a reference legacy system to a
+cloud-based microservices architecture using ADAPT design patterns.
+
+\paragraph{System Architecture}\label{system-architecture}
+
+The current baseline architecture of the e-commerce application is
+structured as a typical legacy e-commerce application with a
+\textbf{\emph{layered architecture}} with a \textbf{Controller Layer},
+\textbf{Service Layer} and a \textbf{Repository Layer}. The application
+is \emph{monolithic}, with all components \textbf{\emph{tightly
+coupled}} together.
+
+\paragraph{Technology Stack}\label{technology-stack}
+
+The technical stack includes a relational database (\emph{PostgreSQL}),
+a backend developed in \emph{Java} with \emph{Spring Boot} framework.
+The current service coupling is high, the \textbf{Order Service} has
+compile-time dependencies on the \textbf{Inventory Service} and the
+\textbf{Payment Service}. The Data is managed through a single database
+schema shared across all services with the \textbf{Billing Service}
+directly accessing the \textbf{User Service} database tables.
+
+\subsubsection{Benchmarking}\label{benchmarking}
+
+The validity of the ADAPT Architecture Principles and Design Patterns is
+assessed using a suite of quantitative metrics derived from recent
+software engineering litterature. Those metrics replace vague notions of
+``clean code'' and ``clean architecture'' with measurable criteria and
+structural attributes.
+
+\paragraph{What to measure?}\label{what-to-measure}
+
+Derived from Panichella et al.~(2021) {[}15{]}, the structural coupling
+measures the senity of dependencies between microservices. Lower
+coupling values indicate better modularity and independence among
+services. It calcultaed as follows:
+
+\[
+SC(s_i) = \frac{\sum_{j \in S; j \not= i} dep(s_i, s_j)}{|S|}
+\]
+
+Where \(dep(s_i, s_j)\) indicated a dependency from service \(i\) to
+service \(j\), and \(|S|\) is the total number of services in the
+system. If \(SC(s_i) = n\) , it means that service \(s_i\) depends on
+\(n\) other services.
+
+With microservices architectures, when our services are too granular and
+too many, there's a nano-service anti-pattern that can appear, we can
+measure the Weighted Service Interface Count (WSIC) and the Service
+Interface Data Cohesion (SIDC).
+
+The WSIC metric {[}20{]} measures API surface area and number of
+interfaces a service exposes, weighted by their complexity.
+
+The SIDC is the metric that quantifie the cohesion of a service based on
+the cohesiveness of the operations exposed in its interface. It's
+defined as follows:
+
+\[
+\begin{aligned}
+S &= \operatorname{SOp}(si_s)=\{o_1,\dots,o_n\},\quad n=|S|.\\
+\text{For }1\le i<j\le n:&\\
+\quad I_{\mathrm{param}}(o_i,o_j)&=
+\begin{cases}
+1,& \operatorname{ParamTypes}(o_i)\cap\operatorname{ParamTypes}(o_j)\neq\varnothing,\\
+0,&\text{otherwise},
+\end{cases}\\
+\quad I_{\mathrm{ret}}(o_i,o_j)&=
+\begin{cases}
+1,& \operatorname{Ret}(o_i)=\operatorname{Ret}(o_j),\\
+0,&\text{otherwise}.
+\end{cases}\\
+P &= \binom{n}{2}\quad(\text{number of unordered operation pairs}).\\
+\text{Then}\qquad SIDC(s) &=
+\begin{cases}
+\displaystyle\frac{\sum_{1\le i<j\le n}\big(I_{\mathrm{param}}(o_i,o_j)+I_{\mathrm{ret}}(o_i,o_j)\big)}{2P}, & P>0,\\[8pt]
+0, & P=0.
+\end{cases}
+\end{aligned}
+\]
+
+Beyond static code analysis, we also have to considers the operational
+metrics defined by the DORA (DevOps Research and Assessment) research
+program, which are widely accepted as key indicators of software
+delivery performance. Those metrics are the deployment frequency, the
+change failure rate, the lead time for changes and the mean time to
+recovery (MTTR).
+
+\paragraph{Performance Testing}\label{performance-testing}
+
+\subsection{Results and Discussion}\label{results-and-discussion}
+
+\subsubsection{Scalability}\label{scalability}
+
+\subsubsection{Resilience}\label{resilience}
+
+\subsubsection{Performance}\label{performance}
+
+\subsubsection{Maintainability}\label{maintainability}
+
+\subsubsection{Developer Experience}\label{developer-experience}
+
+\subsubsection{Future Work}\label{future-work}
+
+\subsection{Conclusion}\label{conclusion}
+
+\subsubsection{Acknowledgements}\label{acknowledgements}
+
+\subsubsection{Weaknesses}\label{weaknesses}
+
+\subsection{References}\label{references}
+
+{[}1{]} Kerbel, M. (2025). SOLID is killing the micro-services industry
+--- ADAPT saves it. Medium.
+https://mathieukerbel.medium.com/solid-is-killing-the-micro-services-industry-adapt-saves-it-7f3f5f4f4f4f
+
+{[}2{]} Kerbel, M. (2025). The ADAPT Architecture Manifesto. GitHub.
+https://github.com/Mideky-hub/adapt-architecture-principle/blob/main/README.md
+
+{[}3{]} Rasheedh, J. A., \& Saradha, S. (2022). Design and Development
+of Resilient Microservices Architecture for Cloud Based Applications
+Using Hybrid Design Patterns. Indian Journal of Computer Science and
+Engineering, 13(2), 365--378. PDF:
+https://www.researchgate.net/profile/J-Rasheedh/publication/360132110\_Design\_and\_Development\_of\_Resilient\_Microservices\_Architecture\_for\_Cloud\_Based\_Applications\_using\_Hybrid\_Design\_Patterns/links/6275381eb1ad9f66c8a72ce1/Design-and-Development-of-Resilient-Microservices-Architecture-for-Cloud-Based-Applications-using-Hybrid-Design-Patterns.pdf
+
+{[}4{]} Bailo, D., Jeffery, K. G., Spinuso, A., \& Fiameni, G. (2015).
+Interoperability Oriented Architecture: The Approach of EPOS for Solid
+Earth e-Infrastructures. In 2015 IEEE 11th International Conference on
+e-Science, Munich, Germany. doi:10.1109/eScience.2015.22
+
+{[}5{]} Di Francesco, P., Lago, P., \& Malavolta, I. (2019).
+Architecting with microservices: A systematic mapping study. Journal of
+Systems and Software, 150, 77--97.
+
+{[}6{]} Balalaie, A., Heydarnoori, A., \& Jamshidi, P. (2016).
+Microservices architecture enables DevOps: Migration to a cloud-native
+architecture. IEEE Software, 33(3), 42--52.
+
+{[}7{]} Newman, S. (2015). Building Microservices: Designing
+Fine-Grained Systems. O'Reilly Media.
+
+{[}8{]} Taibi, D., Lenarduzzi, V., \& Pahl, C. (2020). Microservices
+Anti-patterns: A Taxonomy. In Microservices (pp.~111--128). Springer,
+Cham.
+
+{[}9{]} Soldani, J., Tamburri, D. A., \& Van Den Heuvel, W. J. (2018).
+The pains and gains of microservices: A systematic grey literature
+review. Journal of Systems and Software, 146, 215--232.
+
+{[}10{]} Márquez, G., \& Astudillo, H. (2018). Actual use of
+architectural patterns in microservices-based open source projects. In
+2018 25th Asia-Pacific Software Engineering Conference (APSEC)
+(pp.~31--40). IEEE.
+
+{[}11{]} Lewis, J., \& Fowler, M. (2014). Microservices --- A definition
+of this new architectural term. martinfowler.com.
+https://martinfowler.com/articles/microservices.html
+
+{[}12{]} Ibryam, B., \& Huß, R. (2023). Kubernetes Patterns: Reusable
+Elements for Designing Cloud-Native Applications (2nd ed.). O'Reilly
+Media.
+
+{[}13{]} Burns, B. (2018). Designing Distributed Systems: Patterns and
+Paradigms for Scalable, Reliable Services. O'Reilly Media.
+
+{[}14{]} Ponugoti, M. (2025). Cloud-Native Platform Engineering:
+Scalable Design Patterns for Global Enterprise Resilience. Journal of
+Computer Science and Technology Studies, 7(8), 48--59.
+
+{[}15{]} Panichella, S., Rahman, M.I., \& Taibi, D. (2021). Structural
+Coupling for Microservices. International Conference on Cloud Computing
+and Services Science.
+
+{[}16{]} Merson, P. (2020). Principles for microservice design: Think
+IDEALS, rather than SOLID. InfoQ.
+https://www.infoq.com/articles/microservices-design-ideals/
+
+{[}17{]} Martin, R. C. (2017). Clean Architecture: A Craftsman's Guide
+to Software Structure and Design. Prentice Hall.
+
+{[}18{]} Millett, S., \& Tune, N. (2015). Patterns, Principles, and
+Practices of Domain-Driven Design. Wrox.
+
+{[}19{]} Richardson, C. (2019). Pattern: API Gateway. microservices.io.
+https://microservices.io/patterns/apigateway.html
+
+{[}20{]} Restful-ma, C. (2019). Weighted Service Interface Count (WSIC).
+https://github.com/restful-ma/rama-cli/blob/master/docs/metrics/WeightedServiceInterfaceCount.md
+
+{[}21{]} Mateus Gabi Moreira and Breno Bernard Nicolau De França. 2022.
+Analysis of Microservice Evolution using Cohesion Metrics. In
+Proceedings of the 16th Brazilian Symposium on Software Components,
+Architectures, and Reuse (SBCARS '22). Association for Computing
+Machinery, New York, NY, USA, 40--49.
+https://doi.org/10.1145/3559712.3559716
+
+{[}22{]} Yiming Z., Tiziano D. M., \& Justus B. (2025). How Does
+Microservice Granularity Impact Energy Consumption and Performance? A
+Controlled Experiment. https://arxiv.org/html/2502.00482v1
+
+{[}23{]} Hirzalla, M., Cleland-Huang, J., Arsanjani, A. (2009). A
+Metrics Suite for Evaluating Flexibility and Complexity in Service
+Oriented Architectures. In: Feuerlicht, G., Lamersdorf, W. (eds)
+Service-Oriented Computing -- ICSOC 2008 Workshops. ICSOC 2008. Lecture
+Notes in Computer Science, vol 5472. Springer, Berlin, Heidelberg.
+https://doi.org/10.1007/978-3-642-01247-1\_5
+
+
+
+
+\end{document}
